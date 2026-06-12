@@ -1,3 +1,5 @@
+-- Day 1
+-- 10-06-2026
 show databases;
 use mlb;
 show tables;
@@ -625,6 +627,9 @@ select * from customer where salary not between 30000 and 60000;
 select * from customer where customer_city in ("Pune", "Mumbai", "Nagpur");
 -- 50.Display customers whose performance is in ('Excellent', 'Very Good').
 select * from customer where performance in ("Excellent", "Very Good");
+
+-- Day 2
+-- 11-06-2026
 -- Order By
 -- 1. Display all customers sorted by salary ascending.
 select * from customer order by salary asc;

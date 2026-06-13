@@ -221,6 +221,7 @@ INSERT INTO sales VALUES
 select * from sales;
 select * from sales where customer_name is null;
 -- 2.Display all orders where product is NULL.
+select * from sales where product is null;
 -- 3.Show orders where city is NULL.
 select * from sales where city is null;
 -- 4.Find records where quantity is NULL.
@@ -256,7 +257,7 @@ select * from sales where product like "l%p";
 -- 18.Display products like 'M%e'.
 select * from sales where product like "m%e";
 -- 19.Show cities starting with 'D'.
-select * from sales where city  like "l%";
+select * from sales where city  like "D%";
 -- 20.Find customers whose name contains 'ha'.
 select * from sales where customer_name like "%ha%";
 -- 21.Replace NULL customer_name with 'Unknown'.
@@ -272,10 +273,7 @@ select ifnull(price, 99999), price from sales;
 -- 26.Use COALESCE(customer_name, product, city, 'Missing').
 select coalesce(customer_name,product,city,'Missing') , customer_name from sales;
 -- 27.Display first non-null value among product, city and customer_name.
-select * from sales where product  is not null 
-and city is not null 
-and customer_name is not null 
-limit 1;
+select *, coalesce(customer_name, product, city) as non_null_value from sales;
 -- 28.Replace NULL quantity with 100 using IFNULL().
 select ifnull(quantity,100), quantity from sales;
 -- 29.Show all records with COALESCE(price,0).
@@ -287,7 +285,7 @@ select * from sales order by price asc;
 -- 32.Display all orders sorted by price descending.
 select * from sales order by price desc;
 -- 33.Show customer names alphabetically.
-select * from sales prder order by customer_name asc;
+select * from sales  order by customer_name asc;
 -- 34.Show cities in descending order.
 select * from sales order by city desc;
 -- 35.Display latest orders first.
